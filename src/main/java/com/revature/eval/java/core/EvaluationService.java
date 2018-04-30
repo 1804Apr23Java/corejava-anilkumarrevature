@@ -13,13 +13,22 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String reverse(String string) {
+	public static String reverse(String string) {
 		char[] reversed = new char[string.length()];
 		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
 			reversed[j] = string.charAt(i);
 		}
 		return new String(reversed);
 	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println(reverse("ToBeOrNotToBe"));  
+		
+
+	}
+
+}
 
 	/**
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
@@ -29,10 +38,25 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+public static String acronym(String phrase) {
+	
+    StringBuilder acronyms = new StringBuilder();	
+    
+    String[] WordsArray = phrase.split(" ");
+    
+    for(String word : WordsArray) {
+        acronyms.append( word.substring(0, 1) );
+    }
+return acronyms.toString();
+}
+
+public static void main(String[] args) {
+
+System.out.println("The acronym of the three words are: " + acronym("This is Tom Danion"));
+
+}
+
+}
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
@@ -43,62 +67,111 @@ public class EvaluationService {
 	 * different lengths.
 	 *
 	 */
-	static class Triangle {
-		private double sideOne;
-		private double sideTwo;
-		private double sideThree;
+private double sideOne;
+private double sideTwo;
+private double sideThree;
 
-		public Triangle() {
-			super();
-		}
+public Triangle() {
+	super();
+}
 
-		public Triangle(double sideOne, double sideTwo, double sideThree) {
-			this();
-			this.sideOne = sideOne;
-			this.sideTwo = sideTwo;
-			this.sideThree = sideThree;
-		}
+public Triangle(double sideOne, double sideTwo, double sideThree) {
+	this();
+	this.sideOne = sideOne;
+	this.sideTwo = sideTwo;
+	this.sideThree = sideThree;
+}
 
-		public double getSideOne() {
-			return sideOne;
-		}
+public double getSideOne() {
+	return sideOne;
+}
 
-		public void setSideOne(double sideOne) {
-			this.sideOne = sideOne;
-		}
+public void setSideOne(double sideOne) {
+	this.sideOne = sideOne;
+}
 
-		public double getSideTwo() {
-			return sideTwo;
-		}
+public double getSideTwo() {
+	return sideTwo;
+}
 
-		public void setSideTwo(double sideTwo) {
-			this.sideTwo = sideTwo;
-		}
+public void setSideTwo(double sideTwo) {
+	this.sideTwo = sideTwo;
+}
 
-		public double getSideThree() {
-			return sideThree;
-		}
+public double getSideThree() {
+	return sideThree;
+}
 
-		public void setSideThree(double sideThree) {
-			this.sideThree = sideThree;
-		}
+public void setSideThree(double sideThree) {
+	this.sideThree = sideThree;
+}
 
-		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
-		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
-		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
+public boolean isEquilateral() {
+	
+	if (sideOne == sideTwo && sideTwo == sideThree) {
+		return true;
 	}
+	else	
+	
+	return false;
+}
+
+public boolean isIsosceles() {
+	
+	if ((sideOne == sideTwo) & (sideTwo != sideThree) || (sideTwo == sideThree) & (sideThree!= sideOne)) {
+		return true;
+	}
+	else
+	return false;
+}
+
+
+public boolean isScalene() {
+	
+	if (sideOne != sideTwo && sideTwo != sideThree) {
+		return true;
+	}
+	else
+	return false;
+}
+
+
+
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);  
+
+Triangle t = new Triangle();
+
+System.out.println("Please enter the first side of a triangle");
+double side1 = sc.nextDouble();
+t.setSideOne(side1);
+
+System.out.println("Please enter the second side of a triangle");
+double side2 = sc.nextDouble();
+t.setSideTwo(side2);
+
+System.out.println("Please enter the third side of a triangle");
+double side3 = sc.nextDouble();
+t.setSideThree(side3);
+
+if(t.isEquilateral()== true) {
+	System.out.println("It is a equilateral triangle");
+}
+
+if(t.isIsosceles()== true) {
+		System.out.println("It is a isoscelese triangle");
+	}
+
+if(t.isScalene()== true) {
+			System.out.println("It is a scalene triangle");
+	
+	
+	
+}
+
+}
+
+}
 
 	/**
 	 * 4. Given a word, compute the scrabble score for that word.
@@ -115,11 +188,67 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+public int getScrabbleScore(String string) {
+	  
+	
+    int scrambleScore = 0;
+    string = string.toUpperCase();
+    for (int i = 0; i < string.length(); i++){
+        char letter = string.charAt(i);
+        switch (letter) {
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'L':
+            case 'N':
+            case 'O':
+            case 'R':
+            case 'S':
+            case 'T':
+            case 'U': 
+            	scrambleScore +=1; break;
+            case 'D':
+            case 'G':
+            	scrambleScore+=2; break;
+            case 'B':
+            case 'C':
+            case 'M':
+            case 'P':
+            	scrambleScore +=3; break;
+            case 'F':
+            case 'H':
+            case 'V':
+            case 'W':
+            case 'Y':
+            	scrambleScore +=4; break;
+            case 'K':
+            	scrambleScore +=5; break;
+            case 'J':
+            case 'X':
+            	scrambleScore +=8; break;
+            case 'Q':
+            case 'Z':
+            	scrambleScore +=10; break;
+            default: break;
+        }
+    }
+    return scrambleScore;
+}
 
+
+
+
+
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+ScrabbleScore s = new ScrabbleScore();
+System.out.println("Please enter the word to find the score");
+String word = sc.nextLine();
+System.out.println("The score for the word "+ word + " is: " +s.getScrabbleScore(word));
+
+}
+
+}
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
 	 * 
@@ -151,10 +280,22 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+public String cleanPhoneNumber(String string) {
+	
+	String newNumber = string.replaceAll("[^0-9]",""); 
+	
+	return newNumber;
+}
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	CleanPhoneNumber s = new CleanPhoneNumber();
+	System.out.println("Please enter the phone number");
+	String phoneNumber = sc.nextLine();
+	System.out.println("The score for the word "+ phoneNumber + " is: " +s.cleanPhoneNumber(phoneNumber));
+
+}
+
+}
 
 	/**
 	 * 6. Given a phrase, count the occurrences of each word in that phrase.
@@ -165,10 +306,35 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+public Map<String, String> wordCount(String string) {
+	Map<String, String> map = new HashMap <String, String> ();
+	 
+    if (string != null) {
+        String[] separatedWords = string.split(" ");
+        for (String str: separatedWords) {
+            if (map.containsKey(str)) {
+                int count = Integer.parseInt(map.get(str));
+                map.put(str, String.valueOf(count + 1));
+            } else {
+                map.put(str, "1");
+            }
+        }
+    }
+
+    System.out.println("Count :- " + map);
+    return map;	
+	
+}
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	WordCount s = new WordCount();
+	System.out.println("Please enter the pharase to count the word");
+	String word = sc.nextLine();
+	System.out.println("The score for the word "+ word + " is: " +s.wordCount(word));
+
+}
+
+}
 
 	/**
 	 * 7. Implement a binary search algorithm.
@@ -245,10 +411,38 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
+Scanner sc = new Scanner(System.in);
+	
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		if (string == null) return null;
+	    String[] arr = string.toLowerCase().split(" ");
+	    String pigLatin = "";
+	    int i = 0;
+	    while (i < arr.length) {
+	        pigLatin = "bcdfghjklmnpqrstvwxz".contains("" + arr[i].charAt(0))
+	                ? String.valueOf(pigLatin) + arr[i].substring(1, arr[i].length()) + arr[i].charAt(0) + "ay"
+	                : String.valueOf(pigLatin) + arr[i] + "yay";
+	        if (i != arr.length - 1)
+	            pigLatin= String.valueOf(pigLatin) + " ";
+	        ++i;
+	    }
+	    return pigLatin;
+		
 	}
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		EnglishtoPigLatin s = new EnglishtoPigLatin();
+		System.out.println("Please enter a word to be converted to Pig Latin");
+		String word = sc.nextLine();
+		System.out.println("The Pig Latin for the word "+ word + " is: " +s.toPigLatin(word));
+
+	}
+
+}
+
 
 	/**
 	 * 9. An Armstrong number is a number that is the sum of its own digits each
@@ -265,10 +459,65 @@ public class EvaluationService {
 	 * @param input
 	 * @return
 	 */
-	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
-	}
+public boolean isArmstrongNumber(int input) {
+	int tempVal,noOfDigits = 0,sumOfNumber = 0, remainder;
+	int power = 1;
+	
+	tempVal = input;
+	 
+      // Count number of digits
+ 
+      while (tempVal != 0) {
+        
+		noOfDigits++;
+		
+         tempVal = tempVal/10;
+      }
+ 
+      tempVal = input;
+ 
+      while (tempVal != 0) {
+         remainder = tempVal%10;
+         
+         for (int i = 1; i <= noOfDigits; i++) { 
+	         power = power*remainder;
+         }
+         
+         sumOfNumber = sumOfNumber + power;
+         tempVal = tempVal/10;
+      }
+ 
+      if (input == sumOfNumber) {
+         //System.out.println(n + " is an Armstrong number.");
+    	  return true;
+      }
+      else
+         //System.out.println(n + " isn't an Armstrong number.");         
+
+	return false;
+}
+
+
+public static void main(String[] args) {
+	
+	 Scanner in = new Scanner(System.in);
+	 ArmstrongNumber an = new ArmstrongNumber();
+      System.out.println("Input a number to check if it is an Armstrong number");      
+      int num = in.nextInt();
+      
+      
+      if(an.isArmstrongNumber(num)== true) {
+    	  System.out.println(num + " is an Armstrong number.");
+      } else {
+    	  System.out.println(num + " isn't an Armstrong number.");
+      }
+      
+      
+      
+}
+
+}
+
 
 	/**
 	 * 10. Compute the prime factors of a given natural number.
@@ -280,10 +529,47 @@ public class EvaluationService {
 	 * @param l
 	 * @return
 	 */
-	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+public  static List<Long> calculatePrimeFactorsOf(long l) {
+	
+	
+	
+	
+    List<Long> factors = new ArrayList<Long>();
+    
+    for (Long i = (long) 2; i <= l; i++) {
+        while (l % i == 0) {
+            factors.add(i);
+            l /= i;
+        }
+    }
+    
+    
+    if (l > 0) {
+    return factors;
+    } else {
+    	return null;
+    }
+	
+	
+}
+public static void main(String[] args) {
+	 Scanner in = new Scanner(System.in);
+	 calculatePrimeFactorsOf an = new calculatePrimeFactorsOf();
+      System.out.println("Enter Number to calculate the prime factor");      
+      Long num = (long) in.nextInt();
+      //an.calculatePrimeFactorsOf(num);
+      try {
+      System.out.println("Primefactors of:" + num);
+      for (Long integer : calculatePrimeFactorsOf(num)) {
+            System.out.println(integer);  
+}
+      } catch(NullPointerException n) {
+    	  System.out.println("There is no prime factors");
+      }
+
+}
+}
+
 
 	/**
 	 * 11. Create an implementation of the rotational cipher, also sometimes called
@@ -311,20 +597,55 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
-	static class RotationalCipher {
-		private int key;
+private String alphabet = "abcdefghijklmnopqrstuvwxyz";
+private int key;
 
-		public RotationalCipher(int key) {
-			super();
-			this.key = key;
-		}
+public RotationalCipher(int key) {
+	super();
+	this.key = key;
+}
 
-		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
+public String rotate(String string) {
+	
+	if(string != "") {
+	 string = string.toLowerCase();
+	    String cipherText = "";
+	    for (int i = 0; i < string.length(); i++)
+	    {
+	        char replaceVal = string.charAt(i);
+	        int charPosition = alphabet.indexOf(replaceVal);        
+	        if(charPosition != -1) {
+	            int keyVal = (key + charPosition) % 26;
+	            replaceVal = alphabet.charAt(keyVal);
+	        }
 
+	        cipherText += replaceVal;
+	    }
+	    return cipherText;
 	}
+		else {
+	return null;
+}
+}
+
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	int value = 0;
+	System.out.println("Enter key value for Encryption: ");
+	value = sc.nextInt();
+	
+	RotationalCipher r = new RotationalCipher(value); 
+    System.out.println("Enter the String for Encryption: ");       
+    String message = sc.next();
+    System.out.println(r.rotate(message));
+    
+    if(r.rotate(message)== "null") {
+    	System.out.println("There is nothing to encrypt");
+    }
+        
+}
+
+}
 
 	/**
 	 * 12. Given a number n, determine what the nth prime is.
@@ -338,10 +659,47 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+public int calculateNthPrime(int i) {
+	 int num, count, j;
+	    num=1;
+	    count=0;
+	 
+	    while (count < i){
+	      num=num+1;
+	      for (j = 2; j <= num; j++){
+	        if (num % j == 0) {
+	          break;
+	        }
+	      }
+	      if ( j == num){
+	        count = count+1;
+	      }
+	    }
+	   
+	    return num;
+	    
+	    // System.out.println("Value of nth prime: " + num);
+	  
+	//return 0;
+}
+
+
+
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	Scanner sc = new Scanner(System.in);
+	 
+   System.out.print("Enter n to compute the nth prime number: ");
+
+   int nth = sc.nextInt();
+   
+   calculateNthPrime cnp = new calculateNthPrime();
+   
+   System.out.println("The nth prime number is: " +cnp.calculateNthPrime(nth));
+}
+
+}
+
 
 	/**
 	 * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
@@ -367,31 +725,76 @@ public class EvaluationService {
 	 * rxpyi ldmul cqfnk hlevi gsvoz abwlt gives thequickbrownfoxjumpsoverthelazydog
 	 *
 	 */
-	static class AtbashCipher {
+import java.util.Scanner;
 
-		/**
-		 * Question 13
-		 * 
-		 * @param string
-		 * @return
-		 */
-		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
-
-		/**
-		 * Question 14
-		 * 
-		 * @param string
-		 * @return
-		 */
-		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+public class AtbashCipher {
+	
+	
+	/**
+	 * Question 13
+	 * 
+	 * @param string
+	 * @return
+	 */
+	
+	  private static final String PLAIN = "abcdefghijklmnopqrstuvwxyz";
+	  private static final String CIPHER = "zyxwvutsrqponmlkjihgfedcba";
+	
+	public static String encode(String string) {
+		
+		if(string != null) {
+		string = string.toLowerCase();
+	        String cyphered = "";
+	         
+	        for (char c : string.toCharArray()) {
+	            int idx = PLAIN.indexOf(c);
+	            cyphered += CIPHER.toCharArray()[idx];
+	        }
+	         
+	        return cyphered;
+		} else {
+		return null;
 		}
 	}
 
+	/**
+	 * Question 14
+	 * 
+	 * @param string
+	 * @return
+	 */
+	public static String decode(String string) {
+		string = string.toLowerCase();
+        String cyphered = "";
+         
+        for (char c : string.toCharArray()) {
+            int idx = PLAIN.indexOf(c);
+            cyphered += CIPHER.toCharArray()[idx];
+        }
+         
+        return cyphered;
+		//return null;
+	}
+	public static void main(String[] args) {
+		AtbashCipher ac = new AtbashCipher();
+	
+		Scanner sc = new Scanner(System.in);
+		String value = "";
+		System.out.println("Enter string value for Encryption: ");
+		value = sc.next();
+        
+		System.out.println("The encoded string is: "+ ac.encode(value));
+		
+		System.out.println("The decoded string is: "+ ac.decode(ac.encode(value)));
+	}
+
+}
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ValidIsbn {
 	/**
 	 * 15. The ISBN-10 verification process is used to validate book identification
 	 * numbers. These normally contain dashes and look like: 3-598-21508-8
@@ -415,12 +818,37 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String regex = "^(?:ISBN(?:-10)?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$)[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$";
+		Pattern pattern = Pattern.compile(regex);
+		
+		
+		    Matcher matcher = pattern.matcher(string);
+		    boolean x = matcher.matches();
+		
+		return x;
+		//return false;
 	}
 
+	public static void main(String[] args) {
+		ValidIsbn vi = new ValidIsbn();
+		Scanner sc = new Scanner(System.in);
+		String value = "";
+		System.out.println("Enter the ISBN: ");
+		value = sc.next();
+        
+		
+        if(vi.isValidIsbn(value)== true) {
+        	System.out.println("The ISBN "+ value + " is valid");
+        }else {
+        	System.out.println("The ISBN "+ value + " is not valid");
+        }
+	} 
+
+}
+
+
 	/**
-	 * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
+	 * 16. Determine if a sentence is a pangram. A pangram (Greek: Ï€Î±Î½ Î³Ï�Î¬Î¼Î¼Î±, pan
 	 * gramma, "every letter") is a sentence using every letter of the alphabet at
 	 * least once. The best known English pangram is:
 	 * 
@@ -433,9 +861,61 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+		boolean[] mark = new boolean[26];
+		 
+	       
+	        int index = 0;
+	 
+	        
+	        for (int i = 0; i < string.length(); i++)
+	        {
+	           
+	            if ('A' <= string.charAt(i) && 
+	                    string.charAt(i) <= 'Z')
+	                         
+	                index = string.charAt(i) - 'A';
+	 
+	                
+	            else if('a' <= string.charAt(i) && 
+	                        string.charAt(i) <= 'z')
+	                             
+	                index = string.charAt(i) - 'a';
+	 
+	            
+	            mark[index] = true;
+	        }
+	 
+	        
+	        for (int i = 0; i <= 25; i++)
+	            if (mark[i] == false) 
+	                return (false);
+	            
+	       
+	        return (true);
+	     }
+	
+	
+	
+		
+	
+	public static void main(String[] args) {
+		 String phrase;
+		Scanner sc = new Scanner(System.in);
+		
+		Pangram p = new Pangram();
+		
+		System.out.println("Enter the Pangram phrase: ");
+		phrase = sc.next();
+		if (p.isPangram(phrase) == true)
+	            System.out.print(phrase + " is a pangram.");
+	        else
+	            System.out.print(phrase+ " is not a pangram.");
+
 	}
+
+}
+
 
 	/**
 	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
@@ -504,10 +984,53 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public boolean isLuhnValid(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+public boolean isLuhnValid(String string) {
+		
+		int[] ints = new int[string.length()];
+		for (int i = 0; i < string.length(); i++) {
+			ints[i] = Integer.parseInt(string.substring(i, i + 1));
+		}
+		for (int i = ints.length - 2; i >= 0; i = i - 2) {
+			int j = ints[i];
+			j = j * 2;
+			if (j > 9) {
+				j = j % 10 + 1;
+			}
+			ints[i] = j;
+		}
+		int sum = 0;
+		for (int i = 0; i < ints.length; i++) {
+			sum += ints[i];
+		}
+		if (sum % 10 == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
+
+		
+	
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String numphrase;
+		
+		LuhnFormula lf = new LuhnFormula();
+		System.out.println("Enter the Pangram phrase: ");
+		numphrase = sc.next();
+		if (lf.isLuhnValid(numphrase) == true) {
+	            System.out.print(numphrase + " is a valid for Luhn Formula.");
+		}
+	        else {
+	            System.out.print(numphrase+ " is not valid for Luhn Formula.");
+	        }
+
+	}
+
+}
+
 
 	/**
 	 * 20. Parse and evaluate simple math word problems returning the answer as an
@@ -536,9 +1059,43 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+public int solveWordProblem(String string) {
+	Scanner sc = new Scanner(string);
+	String operator;
+	int firstValue, secondValue;
+    // get the next number from the scanner
+    firstValue = Integer.parseInt(sc.findInLine("[0-9]"));
+
+    // get everything which follows and is not a number (might contain white spaces)
+    operator = sc.findInLine("[^0-9]*").trim();
+    
+     secondValue = Integer.parseInt(sc.findInLine("[0-9]"));
+    
+    switch (operator){
+        case "plus":
+            return firstValue + secondValue;
+        case "minus":
+            return firstValue - secondValue;
+        case "divided by":
+            return firstValue / secondValue;
+        case "multiplied by":
+            return firstValue * secondValue;
+	default:
+            throw new RuntimeException("unknown operator: "+ operator);
+            
+    }
+	
+}
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+	
+	String mathPhrase;
+	
+	MathWordProblems mwp = new MathWordProblems();
+	System.out.println("Enter the math word phrase: ");
+	mathPhrase = sc.next();
+	System.out.println("The solution for the two values in the phrase is: "+(Integer) mwp.solveWordProblem(mathPhrase));
+
+}
 
 }
